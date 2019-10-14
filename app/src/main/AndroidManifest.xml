@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TakeImageActivity"></activity>
+        <activity android:name=".ScancodeActivity"></activity>
+        <activity android:name=".TakeImageActivity" />
 
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
