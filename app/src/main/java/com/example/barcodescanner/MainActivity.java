@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         buttonScan=findViewById(R.id.buttonScancode);
-        buttonTake=findViewById(R.id.buttonTakePicture);
+        //buttonTake=findViewById(R.id.buttonTakePicture);
 
         buttonScan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,11 +25,11 @@ startActivity(new Intent(MainActivity.this,ScancodeActivity.class));
             }
         });
 
-        buttonTake.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,TakeImageActivity.class));
-            }
-        });
+//        buttonTake.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this,TakeImageActivity.class));
+//            }
+//        });
     }
 }
