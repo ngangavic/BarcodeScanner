@@ -1,9 +1,11 @@
 package com.example.barcodescanner;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -95,11 +97,9 @@ public class ScancodeActivity extends AppCompatActivity {
                         ActivityCompat.requestPermissions(ScancodeActivity.this, new
                                 String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
                     }
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
 
             @Override
@@ -123,6 +123,9 @@ public class ScancodeActivity extends AppCompatActivity {
                 final SparseArray<Barcode> barcodes = detections.getDetectedItems();
                 if (barcodes.size() != 0) {
                     intentData = barcodes.valueAt(0).displayValue;
+                    Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    long[] mVibratePattern = new long[]{0, 100};
+                    v.vibrate(mVibratePattern, -1);
                 }
             }
         });
