@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.barcodescanner.java.ScancodeActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button buttonScan,buttonTake;
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         buttonScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-startActivity(new Intent(MainActivity.this,ScancodeActivity.class));
+startActivity(new Intent(MainActivity.this, ScancodeActivity.class));
             }
         });
 

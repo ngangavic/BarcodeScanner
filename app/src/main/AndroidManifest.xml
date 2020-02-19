@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".kotlin.ScannerActivity"></activity>
-        <activity android:name=".ScancodeActivity" />
+        <activity android:name=".java.ScancodeActivity" />
         <activity android:name=".TakeImageActivity" />
 
         <meta-data

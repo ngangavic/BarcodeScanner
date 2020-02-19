@@ -1,4 +1,4 @@
-package com.example.barcodescanner;
+package com.example.barcodescanner.java;
 
 import android.Manifest;
 import android.content.Context;
@@ -18,6 +18,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.barcodescanner.R;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
