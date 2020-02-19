@@ -12,7 +12,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ScancodeActivity"></activity>
+        <activity android:name=".kotlin.ScannerActivity"></activity>
+        <activity android:name=".ScancodeActivity" />
         <activity android:name=".TakeImageActivity" />
 
         <meta-data
@@ -33,10 +34,9 @@
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
-
-             <meta-data
-             android:name="android.support.FILE_PROVIDER_PATHS"
-             android:resource="@xml/provider_paths" />
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
         </provider>
 
         <activity android:name=".MainActivity">
