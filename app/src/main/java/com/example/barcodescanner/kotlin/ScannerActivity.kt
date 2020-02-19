@@ -1,14 +1,16 @@
 package com.example.barcodescanner.kotlin
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Vibrator
+import android.view.Menu
+import android.view.MenuItem
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.barcodescanner.R
 import com.google.android.gms.vision.CameraSource
@@ -23,6 +25,7 @@ class ScannerActivity : AppCompatActivity() {
     private var barcodeDetector: BarcodeDetector? = null
     private var cameraSource: CameraSource? = null
     private val CAMERA_PERMISSION = 201
+    var intentData = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +44,37 @@ class ScannerActivity : AppCompatActivity() {
 
         initialiseDetectorsAndSources()
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.scan_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_done) { //display data
+            if (intentData.length > 0) {
+                val builder = AlertDialog.Builder(this)
+                builder.setCancelable(false)
+                        .setTitle("Barcode content")
+                        .setMessage(intentData)
+                        .setPositiveButton("OK") { dialog, which -> dialog.cancel() }
+                        .setNegativeButton("Cancel") { dialog, which -> dialog.cancel() }
+                val alertDialog = builder.create()
+                alertDialog.show()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        cameraSource!!.release()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        initialiseDetectorsAndSources()
     }
 
     private fun initialiseDetectorsAndSources() {
@@ -105,8 +139,6 @@ class ScannerActivity : AppCompatActivity() {
                 if (barcodes.size() != 0) {
                    val intentData = barcodes.valueAt(0).displayValue
                     vibratePhone()
-
-                    Toast.makeText(this@ScannerActivity,intentData,Toast.LENGTH_SHORT).show()
 
                     barcodeDetector?.release()
                     finish()
